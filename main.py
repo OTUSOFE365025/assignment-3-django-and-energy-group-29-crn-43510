@@ -16,13 +16,19 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 import django
 django.setup()
 
+
 # Import your models for use in your script
 from db.models import *
+
+from gui import launch_gui
+
+
 
 ############################################################################
 ## START OF APPLICATION
 ############################################################################
 """ Replace the code below with your own """
+
 
 # Seed a few users in the database
 Product.objects.all().delete();  # Clear existing users
@@ -35,8 +41,9 @@ Product.objects.create(UPC='12347', name='Chai', price=5.99)
 Product.objects.create(UPC='67892', name='Croissant', price=0.99)
 Product.objects.create(UPC='12348', name='IcedTea', price=4.99)
 Product.objects.create(UPC='67893', name='Bagel', price=0.99)
+launch_gui()
 
 
-
+#just for the console, to confirm that everything has been added properly.
 for u in Product.objects.all():
     print(f'UPC: {u.UPC} \tUsername: {u.name} \tPrice: ${u.price}')

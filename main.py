@@ -25,8 +25,18 @@ from db.models import *
 """ Replace the code below with your own """
 
 # Seed a few users in the database
-User.objects.create(name='Dan')
-User.objects.create(name='Robert')
+Product.objects.all().delete();  # Clear existing users
 
-for u in User.objects.all():
-    print(f'ID: {u.id} \tUsername: {u.name}')
+Product.objects.create(UPC='12345', name='Coffee', price=8.32)
+Product.objects.create(UPC='67890', name='Muffin', price=2.53)
+Product.objects.create(UPC='12346', name='Tea', price=4.99)
+Product.objects.create(UPC='67891', name='Donut', price=1.99)
+Product.objects.create(UPC='12347', name='Chai', price=5.99)
+Product.objects.create(UPC='67892', name='Croissant', price=0.99)
+Product.objects.create(UPC='12348', name='IcedTea', price=4.99)
+Product.objects.create(UPC='67893', name='Bagel', price=0.99)
+
+
+
+for u in Product.objects.all():
+    print(f'UPC: {u.UPC} \tUsername: {u.name} \tPrice: ${u.price}')
